@@ -1,0 +1,20 @@
+{
+  "name": "rss-netz98",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "cors-backdoor -t https://www.netz98.com & vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.41",
+    "vue-router": "^4.1.5",
+    "fast-xml-parser":"^4.0.11",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.1.2",
+    "cors-backdoor": "^1.0.6",
+    "vite": "^3.1.8"
+  }
+}
