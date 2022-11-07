@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, reactive } from "@vue/runtime-core"
+import { onMounted, reactive } from "@vue/runtime-core"
 import { XMLParser } from 'fast-xml-parser'
 import FeedItem from './components/FeedItem.vue'
 
@@ -10,19 +10,20 @@ onMounted(() => {
 })
 
 function getRss() {
-    try {
-      const parser = new XMLParser();
-      fetch('http://localhost:1234/feed/')
-      .then(async (response) => {
-        let result = await response.text();
-        let rssFeed = parser.parse(result)
-        state.channel = rssFeed.rss.channel
-      })
-    }
-    catch {
-      console.log(err)
-    }
+  try {
+    const parser = new XMLParser();
+
+    fetch('http://localhost:1234/feed/')
+    .then(async (response) => {
+      let result = await response.text();
+      let rssFeed = parser.parse(result)
+      state.channel = rssFeed.rss.channel
+    })
   }
+  catch {
+    console.log("error")
+  }
+}
 </script>
 
 <template>
