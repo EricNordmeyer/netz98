@@ -2,6 +2,8 @@
 import { onMounted, reactive } from "@vue/runtime-core"
 import { XMLParser } from 'fast-xml-parser'
 import FeedItem from './components/FeedItem.vue'
+import HeaderItem from './components/HeaderItem.vue'
+
 
 const state = reactive({ feedItems: [], title: '', description: '', channel: {} })
 
@@ -28,9 +30,10 @@ function getRss() {
 
 <template>
   <div>
-    <header>
-      <h1><a v-bind:href="state.channel.link" class="green"> {{ state.channel.title }}</a>{{ state.channel.description }}</h1>
-    </header>
+    <HeaderItem :homeLink="state.channel.link">
+      <template #brand>{{ state.channel.title }}</template>
+      <template #description>{{ state.channel.description }}</template>
+    </HeaderItem>
     <div v-for="item, index in state.channel.item" :key="index">
       <FeedItem>
         <template #heading><a :href="item.link">{{ item.title }}</a></template>
@@ -41,14 +44,3 @@ function getRss() {
 
   </div>
 </template>
-
-<style scoped>
-  header {
-    margin-bottom: 24px;
-  }
-
-  h1 a{
-    color: #009;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
-</style>
