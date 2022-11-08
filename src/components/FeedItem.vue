@@ -19,7 +19,7 @@ function toggleContent() {
       <a :href="item.link">{{ item.title }}</a>
     </h2>
     <p class="description" v-html="item.description" />
-    <p class="content" v-if="state.showContent" v-html="item['content:encoded']" />
+    <p class="content" v-if="state.showContent" @click="toggleContent" v-html="item['content:encoded']" />
     <button @click="toggleContent">{{ state.buttonText }}</button>
   </div>
 </template>
