@@ -29,7 +29,7 @@ function toggleContent() {
     border: 1px solid #999;
     border-radius: 6px;
     padding: 0 8px 8px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     background-color: #EEE;
   }
 
@@ -43,7 +43,11 @@ function toggleContent() {
   }
 
   button {
-    background: #009;
+    background: #2bafe5;
     color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 8px;
+    width: 100%;
   }
 </style>
