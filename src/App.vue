@@ -12,20 +12,24 @@ onMounted(() => {
 })
 
 function getRss() {
-  try {
-    const parser = new XMLParser();
+  const parser = new XMLParser();
 
-    fetch('http://localhost:1234/feed/')
-    .then(async (response) => {
-      let result = await response.text();
+  fetch('http://localhost:1234/feed/')
+  .then((response) => {
+    if (response.ok) {
+      return response.text();
+    }
+  })
+  .then((result) => {
       let rssFeed = parser.parse(result)
       state.channel = rssFeed.rss.channel
-    })
-  }
-  catch {
-    console.log("error")
-  }
+    }
+  )
+  .catch((error) => {
+    console.log(error)
+  })
 }
+
 </script>
 
 <template>
