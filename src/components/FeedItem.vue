@@ -1,6 +1,10 @@
 <script setup>
 import { reactive } from "@vue/runtime-core"
 
+const props = defineProps({
+  item: Object
+})
+
 const state = reactive({buttonText: 'mehr', showContent: false})
 
 function toggleContent() {
@@ -12,14 +16,10 @@ function toggleContent() {
 <template>
   <div class="item">
     <h2>
-      <slot name="heading"></slot>
+      <a :href="item.link">{{ item.title }}</a>
     </h2>
-    <p class="description"  >
-      <slot name="description"></slot>
-    </p>
-    <p class="content" v-if="state.showContent">
-      <slot></slot>
-    </p>
+    <p class="description" v-html="item.description" />
+    <p class="content" v-if="state.showContent" v-html="item['content:encoded']" />
     <button @click="toggleContent">{{ state.buttonText }}</button>
   </div>
 </template>

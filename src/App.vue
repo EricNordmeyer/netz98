@@ -35,11 +35,7 @@ function getRss() {
       <template #description>{{ state.channel.description }}</template>
     </HeaderItem>
     <div v-for="item, index in state.channel.item" :key="index">
-      <FeedItem>
-        <template #heading><a :href="item.link">{{ item.title }}</a></template>
-        <template #description><p v-html="item.description" /></template>
-        <div v-html="item['content:encoded']" />
-      </FeedItem>
+      <FeedItem :item="item" />
     </div>
 
   </div>
