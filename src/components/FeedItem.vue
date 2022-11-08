@@ -26,11 +26,11 @@ function toggleContent() {
 
 <style scoped>
   .item {
-    border: 1px solid #999;
+    border: 1px solid #ddd;
     border-radius: 6px;
     padding: 0 8px 8px;
     margin-bottom: 16px;
-    background-color: #EEE;
+    background-color: #f6f6f6;
   }
 
   h2 {
@@ -39,7 +39,13 @@ function toggleContent() {
   }
 
   .description {
-    margin-bottom: 20px
+    margin-bottom: 20px;
+  }
+  .content {
+    background: #fff;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
   }
 
   button {
