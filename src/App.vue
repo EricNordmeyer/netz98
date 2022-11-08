@@ -4,7 +4,6 @@ import { XMLParser } from 'fast-xml-parser'
 import FeedItem from './components/FeedItem.vue'
 import HeaderItem from './components/HeaderItem.vue'
 
-
 const state = reactive({ feedItems: [], title: '', description: '', channel: {} })
 
 onMounted(() => {
@@ -19,6 +18,7 @@ function getRss() {
     if (response.ok) {
       return response.text();
     }
+    throw new Error('Something went wrong');
   })
   .then((result) => {
       let rssFeed = parser.parse(result)
@@ -29,7 +29,6 @@ function getRss() {
     console.log(error)
   })
 }
-
 </script>
 
 <template>
@@ -41,6 +40,5 @@ function getRss() {
     <div v-for="item, index in state.channel.item" :key="index">
       <FeedItem :item="item" />
     </div>
-
   </div>
 </template>
